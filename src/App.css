@@ -8,3 +8,27 @@
 li {
   all: unset;
 }
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.CardStyling {
+  border: 2px solid darkgray;
+  border-radius: 10px;
+  margin: 2em;
+  box-shadow: 10px 10px 5px lightgray;
+}
+
+button {
+  margin: 0 10px
+}
+
+.main-article-image {
+  width: 90%
+}
+
+.text-body {
+  padding: 1em 2em
+}
