@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById } from "../api"
+import Comments from "./Comments"
 
 function Article () {
     const [article, setArticle] = useState({})
@@ -18,7 +19,7 @@ if(isLoading) {
     return <h2>Loading...</h2>
 }
 
-    return <article>
+    return <><article>
         <h2>{article.title}</h2>
         <img src={article.article_img_url}/>
         <p>Topic: {article.topic}</p>
@@ -27,7 +28,8 @@ if(isLoading) {
         <p>Date: {article.created_at}</p>
         <p>{article.body}</p>
     </article>
-
+    <Comments />
+    </>
 }
 
 export default Article
