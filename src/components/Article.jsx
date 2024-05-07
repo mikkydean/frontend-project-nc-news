@@ -25,7 +25,7 @@ if(isLoading) {
         <p>Topic: {article.topic}</p>
         <p>Votes: {article.votes}</p>
         <p>Author: {article.author}</p>
-        <p>Date: {article.created_at}</p>
+        <p>Date: {article.created_at.slice(0,10)}</p>
         <p>{article.body}</p>
     </article>
     <Comments />
