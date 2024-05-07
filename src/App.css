@@ -14,6 +14,15 @@ li {
   font-weight: bold;
 }
 
+.success {
+  color: green;
+  font-weight: bold;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 .CardStyling {
   border: 2px solid darkgray;
   border-radius: 10px;
@@ -32,3 +41,31 @@ button {
 .text-body {
   padding: 1em 2em
 }
+
+textarea {
+
+  display: block;
+  width: 80vw;
+  max-width: 600px;
+  height: 10em;
+  border-radius: 10px;
+  }
+
+  .right-align {
+    text-align: right;
+    margin-top: 1em
+  }
+
+  form {
+    margin: 1em auto;
+    width: 80vw;
+    max-width: 600px;
+  }
+
+  .comment-form {
+    border-bottom: 2px dotted black
+  }
+
+  .all-comments {
+    margin-top: 2em
+  }

@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Article from "./components/Article";
+import CommentForm from "./components/CommentForm";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles/:article_id" element={<Article />} />
+        <Route path="/articles/:article_id/comments" element={<CommentForm/>} />
       </Routes>
     </>
   );

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { getCommentsById } from "../api";
 import CommentCard from "./CommentCard";
 import Expandable from "./Expandable";
-import CardStyling from "./CardStyling";
+import CommentForm from "./CommentForm";
 
 function Comments() {
   const [comments, setComments] = useState([]);
@@ -27,12 +27,13 @@ function Comments() {
 
   return (
     <>
+      <CommentForm setComments={setComments} comments={comments}/>
       <Expandable>
-          <ul>
-            {comments.map((comment) => {
-              return <CommentCard key={comment.comment_id} comment={comment} />;
-            })}
-          </ul>
+        <ul>
+          {comments.map((comment) => {
+            return <CommentCard key={comment.comment_id} comment={comment} />;
+          })}
+        </ul>
       </Expandable>
     </>
   );
