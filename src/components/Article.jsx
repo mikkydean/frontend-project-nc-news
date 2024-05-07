@@ -36,9 +36,8 @@ if(isLoading) {
         <img className='main-article-image' src={article.article_img_url}/>
         <p>Topic: {article.topic}</p>
         <p>Total votes: {article.votes + myVote}</p>
-        <button onClick={() => handleVote(1)}>Upvote (+1)</button>
-        <button onClick={() => handleVote(0)}>Cancel my vote</button>
-        <button onClick={() => handleVote(-1)}>Downvote (-1)</button>
+        <button disabled={myVote === -1} onClick={() => handleVote(-1)}>Downvote (-1)</button>
+        <button disabled={myVote === 1} onClick={() => handleVote(1)}>Upvote (+1)</button>
         {isError && <p className="error">An error occurred when voting. Please try again.</p>}
         <p>Author: {article.author}</p>
         <p>Date: {article.created_at.slice(0,10)}</p>
