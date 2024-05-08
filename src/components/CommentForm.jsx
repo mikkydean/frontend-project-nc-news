@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { postComment } from "../api";
+import { UserContext } from "../contexts/User";
 
 function CommentForm({ setComments, comments }) {
   const [commentBody, setCommentBody] = useState("");
@@ -9,6 +10,7 @@ function CommentForm({ setComments, comments }) {
   const [isError, setIsError] = useState(false);
   const [isSuccessful, setIsSuccessful] = useState(false);
   const [isValidComment, setIsValidCOmment] = useState(true)
+  const { currentUser} = useContext(UserContext)
 
   const handleBodyChange = (e) => {
     setCommentBody(e.target.value);
@@ -29,7 +31,7 @@ function CommentForm({ setComments, comments }) {
     setCommentBody(e.target[0].value);
     const bodyForPosting = {
       article_id: article_id,
-      username: "tickle122",
+      username: currentUser,
       body: commentBody,
     };
     postComment(article_id, bodyForPosting)
