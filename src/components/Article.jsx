@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticleById, patchVote } from "../api"
 import Comments from "./Comments"
-import { UserContext } from "../contexts/User"
 
 function Article () {
     const [article, setArticle] = useState({})
@@ -10,7 +9,6 @@ function Article () {
     const [isLoading, setIsLoading] = useState(true)
     const [myVote, setMyVote] = useState(0)
     const [isError, setIsError] = useState(false)
-    const { currentUser, isLoggedIn } = useContext(UserContext)
     
     useEffect(() => {
         getArticleById(article_id).then((response) => {

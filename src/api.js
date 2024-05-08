@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getAllArticles = () => {
-  return axios.get("https://nc-news-7ch2.onrender.com/api/articles");
+export const getArticles = (params) => {
+  return axios.get("https://nc-news-7ch2.onrender.com/api/articles/", params);
 };
 
 export const getArticleById = (article_id) => {
@@ -15,6 +15,10 @@ export const getCommentsById = (article_id) => {
     `https://nc-news-7ch2.onrender.com/api/articles/${article_id}/comments`
   );
 };
+
+export const getTopics = () => {
+  return axios.get("https://nc-news-7ch2.onrender.com/api/topics")
+}
 
 export const patchVote = (article_id, votes) => {
   return axios.patch(
