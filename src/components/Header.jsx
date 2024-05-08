@@ -15,14 +15,14 @@ function Header() {
   }
 
   return (
-    <>
+    <header>
     <div className="right-align"> 
     {isLoggedIn ? <button onClick={handleLogout}>Log out</button> : <button onClick={handleLogin}>Log in</button>}
     {isLoggedIn && <p>User: {currentUser}</p>}
     </div>
       <h1>NC News</h1>
       <NavBar />
-    </>
+      </header>
   );
 }
 

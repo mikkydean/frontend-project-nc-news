@@ -28,53 +28,69 @@ li {
   border-radius: 10px;
   margin: 2em;
   box-shadow: 10px 10px 5px lightgray;
+  max-width: 500px;
+  padding: 0 3em;
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
-  margin: 0 10px
+  margin: 0 10px;
 }
 
 .main-article-image {
-  width: 90%
+  width: 90%;
 }
 
 .text-body {
-  padding: 1em 2em
+  padding: 1em 2em;
 }
 
 textarea {
-
   display: block;
   width: 80vw;
   max-width: 600px;
   height: 10em;
   border-radius: 10px;
-  }
+}
 
-  .right-align {
-    text-align: right;
-    margin-top: 1em
-  }
+.right-align {
+  text-align: right;
+  margin-top: 1em;
+}
 
-  form {
-    margin: 1em auto;
-    width: 80vw;
-    max-width: 600px;
-  }
+form {
+  margin: 1em auto;
+  width: 80vw;
+  max-width: 600px;
+}
 
-  .comment-form {
-    border-bottom: 2px dotted black
-  }
+.comment-form {
+  border-bottom: 2px dotted black;
+}
 
-  .all-comments {
-    margin-top: 2em
-  }
+.all-comments {
+  margin-top: 2em;
+}
 
-  .delete-button {
-    background-color: rgba(255, 0, 0, 0.402);
-    margin-bottom: 1em
-  }
+.delete-button {
+  background-color: rgba(255, 0, 0, 0.402);
+  margin-bottom: 1em;
+}
 
-  .delete-button:hover {
-    border-color: red
+.delete-button:hover {
+  border-color: red;
+}
+
+header {
+  border-bottom: 2px black solid;
+  padding-bottom: 2em
+}
+
+.home-link {
+  font-size: large;
+  font-weight: bold;
   }
