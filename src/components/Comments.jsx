@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getCommentsById } from "../api";
 import CommentCard from "./CommentCard";
 import Expandable from "./Expandable";
 import CommentForm from "./CommentForm";
+import { UserContext } from "../contexts/User"
+
+
 
 function Comments() {
   const [comments, setComments] = useState([]);
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+  const { isLoggedIn } = useContext(UserContext)
+
 
   useEffect(() => {
     getCommentsById(article_id).then((response) => {
@@ -27,7 +32,7 @@ function Comments() {
 
   return (
     <>
-      <CommentForm setComments={setComments} comments={comments}/>
+      {!isLoggedIn ? <p className="bold">Please log in to post a comment</p> : <CommentForm setComments={setComments} comments={comments}/>}
       <Expandable>
         <ul>
           {comments.map((comment) => {

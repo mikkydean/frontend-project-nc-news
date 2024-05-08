@@ -26,3 +26,7 @@ export const patchVote = (article_id, votes) => {
 export const postComment = (article_id, commentBody) => {
     return axios.post(`https://nc-news-7ch2.onrender.com/api/articles/${article_id}/comments`, commentBody)
 }
+
+export const deleteComment = (comment_id) => {
+  return axios.delete(`https://nc-news-7ch2.onrender.com/api/comments/${comment_id}`)
+}
