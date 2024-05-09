@@ -5,6 +5,7 @@ import CommentCard from "./CommentCard";
 import Expandable from "./Expandable";
 import CommentForm from "./CommentForm";
 import { UserContext } from "../contexts/User"
+import ErrorComponent from "./ErrorComponent";
 
 
 
@@ -13,18 +14,26 @@ function Comments() {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const { isLoggedIn } = useContext(UserContext)
+  const [isApiError, setIsApiError] = useState(null)
 
 
   useEffect(() => {
+    setIsApiError(false)
     getCommentsById(article_id).then((response) => {
       setComments(response.data.comments);
       setIsLoading(false);
-    });
+    }).catch((err) => {
+      setIsApiError(err)
+  })
+    ;
   }, []);
 
-  if (isLoading) {
-    return <h2>Loading...</h2>;
-  }
+  if (isApiError) {
+    return <ErrorComponent status={isApiError.response.data.message} message={isApiError.response.request.status}/>
+}
+else if(isLoading) {
+    return <h2>Loading...</h2>
+}
 
   if (comments.length === 0) {
     return <>

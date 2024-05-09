@@ -2,16 +2,17 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import ErrorComponent from "./ErrorComponent";
 
 
 function TopicPage () {
     const { slug } = useParams()
     const [isLoading, setIsLoading] = useState(true)
-    const [isError, setIsError] = useState(false)
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState([])
+    const [isApiError, setIsApiError] = useState(false)
 
     useEffect(() => {
-        setIsError(false)
+      setIsApiError(false)
         getArticles({
             params: {
               topic: slug,
@@ -20,19 +21,20 @@ function TopicPage () {
           setIsLoading(false)
         })
         .catch((err) => {
-            setIsError(true)
+          setIsApiError(err)
         });
       }, [slug]);
 
-
-    if(isLoading) {
+    if (isApiError) {
+        return <ErrorComponent status={isApiError.response.request.status} message={isApiError.response.data.message}/>
+    }
+    else if(isLoading) {
         return <h2>Loading...</h2>
     }
 
 
     return <>
     <h2>All articles about {slug}</h2>
-    {isError && <p className="error">An error occurred when loading the page. Please try again.</p>}
     <ul>
         {articles.map((article) => {
             return <ArticleCard key={article.article_id} article={article}/>
