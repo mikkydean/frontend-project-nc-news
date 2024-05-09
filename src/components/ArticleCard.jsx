@@ -11,9 +11,8 @@ function ArticleCard({ article }) {
         <Link to={`/articles/${article.article_id}`}>
           <h3>{article.title}</h3>
           <img src={article.article_img_url} width="250px" />
-          <p className="space-between">
-            <span>{capitalisedTopic}</span> <span>Votes: {article.votes}</span>
-          </p>
+            <p className="space-between"><span>{capitalisedTopic}</span> <span>Votes: {article.votes}</span></p>
+            <p className="space-between"><span>Date: {article.created_at.slice(0,10)}</span> <span>Comments: {article.comment_count}</span></p>
         </Link>
       </li>
     </CardStyling>

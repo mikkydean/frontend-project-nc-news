@@ -35,14 +35,16 @@ if(isLoading) {
     return <><article>
         <h2>{article.title}</h2>
         <img className='main-article-image' src={article.article_img_url}/>
-        <p>Topic: {article.topic}</p>
-        <p>Total votes: {article.votes + myVote}</p>
-        <button disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(-1)}>Downvote (-1)</button>
-        <button disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(1)}>Upvote (+1)</button>
+        <p  className="space-between"><span>Topic: {article.topic}</span><span>Author: {article.author}</span></p>
+        <p className="space-between"><span>Date: {article.created_at.slice(0,10)}</span> <span>Comments: {article.comment_count}</span></p>
+        <div className="space-around border-bottom">
+        <button className="vote-button" disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(-1)}>-1</button>
+        <p>Total votes: <span className="bold">{article.votes + myVote}</span></p>
+        <button className="vote-button" disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(1)}>+1</button>
+        </div>
         {isError && <p className="error">An error occurred when voting. Please try again.</p>}
-        <p>Author: {article.author}</p>
-        <p>Date: {article.created_at.slice(0,10)}</p>
-        <p>{article.body}</p>
+        
+        <p className="border-bottom">{article.body}</p>
     </article>
     <Comments />
     </>

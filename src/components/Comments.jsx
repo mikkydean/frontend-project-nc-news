@@ -27,7 +27,10 @@ function Comments() {
   }
 
   if (comments.length === 0) {
-    return <p>No comments exist for this article.</p>;
+    return <>
+    {!isLoggedIn ? <p className="bold">Please log in to post a comment</p> : <CommentForm setComments={setComments} comments={comments}/>}
+    <p>No comments exist for this article.</p>
+    </>
   }
 
   return (
