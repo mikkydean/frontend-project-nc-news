@@ -26,15 +26,27 @@ li {
 .CardStyling {
   border: 2px solid darkgray;
   border-radius: 10px;
-  margin: 2em;
+  margin: 2em auto;
   box-shadow: 10px 10px 5px lightgray;
   max-width: 500px;
   padding: 0 3em;
+
+  
 }
 
 .space-between {
   display: flex;
   justify-content: space-between;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+.space-around {
+  display: flex;
+  justify-content: center;
+  gap: 0em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }
 
 button {
@@ -50,6 +62,7 @@ button {
 }
 
 textarea {
+  margin-top: 1em;
   display: block;
   width: 80vw;
   max-width: 600px;
@@ -93,4 +106,24 @@ header {
 .home-link {
   font-size: large;
   font-weight: bold;
+  }
+
+  select {
+    padding: 0.2em;
+    background-color: #f9f9f9;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    border-radius: 5px;
+  }
+
+  .vote-button {
+    box-sizing: content-box;
+    padding: 0 0.5em;
+    height: 2em;
+    margin: auto 1em;
+    background-color: rgba(176, 196, 222, 0.424);
+  }
+
+  .border-bottom {
+    border-bottom: 2px solid black;
+    padding-bottom: 1.2em;
   }

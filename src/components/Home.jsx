@@ -1,9 +1,14 @@
+import { useState } from "react";
 import ArticlesList from "./ArticlesList";
+import Sort from "./Sort";
 
 function Home() {
+  const [sortCriteria, setSortCriteria] = useState('created_at-desc')
+
   return (
     <>
-      <ArticlesList />
+      <Sort sortCriteria={sortCriteria} setSortCriteria={setSortCriteria}/>
+      <ArticlesList sortCriteria={sortCriteria}/>
     </>
   );
 }

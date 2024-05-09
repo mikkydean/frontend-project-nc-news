@@ -1,17 +1,36 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
+import { useSearchParams } from "react-router-dom";
 
-function ArticlesList() {
+function ArticlesList({ sortCriteria} ) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const sortQuery = sortCriteria.split('-')[0]
+  const sortOrder = sortCriteria.split('-')[1]
+
+  const setSortOrder = (sortQuery, sortOrder) => {
+    const newParams = new URLSearchParams(searchParams)
+    newParams.set('sort_by', sortQuery)
+    newParams.set('order', sortOrder)
+    setSearchParams(newParams)
+  }
 
   useEffect(() => {
-    getArticles().then((response) => {
+    setSortOrder(sortQuery, sortOrder)
+    getArticles({params: {
+      sort_by: sortQuery,
+      order: sortOrder
+  }}).then((response) => {
       setArticles(response.data.articles);
       setIsLoading(false)
+    })
+    .catch((err) => {
+      console.log(err)
     });
-  }, []);
+  }, [sortCriteria]);
 
   if(isLoading) {
     return <h2>Loading...</h2>
