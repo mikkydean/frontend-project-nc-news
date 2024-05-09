@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { getArticles } from "../api";
 import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
+import ErrorComponent from "./ErrorComponent";
 
 function ArticlesList({ sortCriteria} ) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [searchParams, setSearchParams] = useSearchParams()
+  const [isApiError, setIsApiError] = useState(null)
 
   const sortQuery = sortCriteria.split('-')[0]
   const sortOrder = sortCriteria.split('-')[1]
@@ -19,6 +21,7 @@ function ArticlesList({ sortCriteria} ) {
   }
 
   useEffect(() => {
+    setIsApiError(false)
     setSortOrder(sortQuery, sortOrder)
     getArticles({params: {
       sort_by: sortQuery,
@@ -28,11 +31,14 @@ function ArticlesList({ sortCriteria} ) {
       setIsLoading(false)
     })
     .catch((err) => {
-      console.log(err)
+      setIsApiError(err)
     });
   }, [sortCriteria]);
 
-  if(isLoading) {
+  if(isApiError) {
+    return <ErrorComponent status={isApiError.response.request.status} message={isApiError.response.data.message}/>
+}
+else if(isLoading) {
     return <h2>Loading...</h2>
 }
 
