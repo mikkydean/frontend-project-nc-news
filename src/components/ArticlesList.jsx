@@ -42,8 +42,6 @@ function ArticlesList({ sortCriteria, selectedTopic } ) {
     });
   }, [sortCriteria, selectedTopic, currentPage]);
 
-  console.log(lastPage)
-
   useEffect(() => {
     setCurrentPage(1)
   }, [selectedTopic, sortOrder])
