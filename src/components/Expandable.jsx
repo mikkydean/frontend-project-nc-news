@@ -9,7 +9,7 @@ function Expandable({ children }) {
 
   return (
     <div className="all-comments">
-      <button onClick={handleClick}>
+      <button id="comment-button" onClick={handleClick}>
         {isShowing ? "Hide" : "Show"} comments
       </button>
       {isShowing && children}

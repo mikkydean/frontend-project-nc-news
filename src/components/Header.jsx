@@ -19,7 +19,7 @@ function Header() {
   return (
     <header>
     <div className="right-align-header"> 
-    {isLoggedIn ? <button onClick={handleLogout}>Log out</button> : <button onClick={handleLogin}>Log in</button>}
+    {isLoggedIn ? <button class="login" onClick={handleLogout}>Log out</button> : <button class="login" onClick={handleLogin}>Log in</button>}
     {isLoggedIn && <div><img className="avatar inline" src={userAvatar}/> <p className="inline">{currentUser}</p></div>}
     </div>
       <h1>NC News</h1>

@@ -14,7 +14,7 @@ const handleChange = (e) => {
         <option value="created_at-desc">Newest</option>
         <option value="created_at-asc">Oldest</option>
         <option value="votes-desc">Most votes</option>
-        <option value="votes-asc">Least votes</option>
+        <option value="votes-asc">Fewest votes</option>
         <option value="comment_count-desc">Most comments</option>
         <option value="comment_count-asc">Fewest comments</option>
       </select>

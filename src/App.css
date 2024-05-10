@@ -54,6 +54,7 @@ button {
 
 .main-article-image {
   width: 90%;
+  max-width: 600px;
 }
 
 .text-body {
@@ -123,7 +124,7 @@ header {
     box-sizing: content-box;
     padding: 0 0.5em;
     height: 2em;
-    margin: auto 1em;
+    margin: 0 1em;
     background-color: rgba(176, 196, 222, 0.424);
   }
 
@@ -142,6 +143,10 @@ header {
 
   }
 
+.vote-text{
+  margin-top: 3px
+}
+
   .inline {
     margin-top: 1em;
     display: inline;
@@ -157,5 +162,120 @@ header {
     flex-wrap: wrap;
     flex-direction: row;
     column-gap: 20px;
-    flex: 1 1 0
+    flex: 1 1 0;
+    margin-right: 2.5em
   }
+
+  .margin-0 {
+    margin: 0
+  }
+
+  .login {
+    background-color: lightblue;
+    outline: none;
+    box-shadow: none
+  }
+
+  #comment-button {
+    margin-bottom: 3em
+  }
+
+  .border-top {
+    border-top: black solid 2px;
+    padding: 1em
+  }
+
+  .article-body {
+    padding: 0 4em;
+  }
+  @media only screen and (max-width: 800px) {
+  .article-info {
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr;
+      grid-template-rows: auto;
+      grid-template-areas: 
+        "title title main-article-image"
+        "article-body article-body main-article-image "
+        "article-body article-body article-info"
+        "article-body article-body votes";
+    }
+  
+    .title {
+      grid-area: title;
+      text-align: left;
+      padding-left: 2em
+    }
+  
+    .main-article-image {
+      grid-area: main-article-image;
+      padding: 1em 2em;
+      vertical-align: middle;
+    }
+  
+    .article-body {
+      grid-area: article-body;
+      padding: 0 4em;
+      text-align: left;
+    }
+  
+    .article-info {
+      grid-area: article-info;
+      font-weight: bold;
+    }
+  
+    .votes {
+      grid-area: votes;
+    }
+  
+  }
+
+  @media only screen and (min-width: 1000px) {
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "title title main-article-image"
+      "article-body article-body main-article-image "
+      "article-info article-info main-article-image"
+      "votes votes main-article-image";
+  }
+
+  .title {
+    grid-area: title;
+    text-align: left;
+    padding-left: 2em
+  }
+
+  .main-article-image {
+    grid-area: main-article-image;
+    padding: 1em 2em;
+    vertical-align: middle;
+  }
+
+  .article-body {
+    grid-area: article-body;
+    padding: 0 4em;
+    text-align: left;
+  }
+
+  .article-info {
+    grid-area: article-info;
+    font-weight: bold;
+  }
+
+  .votes {
+    grid-area: votes;
+  }
+
+}
