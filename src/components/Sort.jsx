@@ -8,15 +8,15 @@ const handleChange = (e) => {
 }
 
   return (
-    <div className="right-align">
+    <div >
       <label htmlFor="sort-order-selection">Sort by: </label>
       <select value={sortCriteria} onChange={handleChange} id="sort-order-selection">
-        <option value="created_at-desc">Date: Newest</option>
-        <option value="created_at-asc">Date: Oldest</option>
-        <option value="votes-desc">Votes: Most popular</option>
-        <option value="votes-asc">Votes: Least popular</option>
-        <option value="comment_count-desc">Comments: Most commented</option>
-        <option value="comment_count-asc">Comments: Least commented</option>
+        <option value="created_at-desc">Newest</option>
+        <option value="created_at-asc">Oldest</option>
+        <option value="votes-desc">Most votes</option>
+        <option value="votes-asc">Least votes</option>
+        <option value="comment_count-desc">Most comments</option>
+        <option value="comment_count-asc">Fewest comments</option>
       </select>
     </div>
   );

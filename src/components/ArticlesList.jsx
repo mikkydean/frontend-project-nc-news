@@ -4,7 +4,7 @@ import ArticleCard from "./ArticleCard";
 import { useSearchParams } from "react-router-dom";
 import ErrorComponent from "./ErrorComponent";
 
-function ArticlesList({ sortCriteria} ) {
+function ArticlesList({ sortCriteria, selectedTopic } ) {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [searchParams, setSearchParams] = useSearchParams()
@@ -25,7 +25,8 @@ function ArticlesList({ sortCriteria} ) {
     setSortOrder(sortQuery, sortOrder)
     getArticles({params: {
       sort_by: sortQuery,
-      order: sortOrder
+      order: sortOrder,
+      topic: selectedTopic
   }}).then((response) => {
       setArticles(response.data.articles);
       setIsLoading(false)
@@ -33,19 +34,22 @@ function ArticlesList({ sortCriteria} ) {
     .catch((err) => {
       setIsApiError(err)
     });
-  }, [sortCriteria]);
+  }, [sortCriteria, selectedTopic]);
 
   if(isApiError) {
     return <ErrorComponent status={isApiError.response.request.status} message={isApiError.response.data.message}/>
 }
 else if(isLoading) {
-    return <h2>Loading...</h2>
+    return <>
+    <h2>Loading...</h2>
+    <p>Note: On initial load, this may take up to one minute while the back end spins up.</p>
+    </>
 }
 
   return (
     <>
-      <h2>All articles</h2>
-      <ul>
+      {selectedTopic === "" ? <h2>All articles</h2> : <h2>Articles about {selectedTopic}</h2>}
+      <ul className="card-layout">
         {articles.map((article) => {
             return <ArticleCard key={article.article_id} article={article}/>
         })}

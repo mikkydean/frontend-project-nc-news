@@ -1,7 +1,6 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
 }
 
@@ -28,8 +27,9 @@ li {
   border-radius: 10px;
   margin: 2em auto;
   box-shadow: 10px 10px 5px lightgray;
-  max-width: 500px;
-  padding: 0 3em;
+  width: 400px;
+  padding: 0 1em;
+  padding-bottom: 1em
 
   
 }
@@ -37,8 +37,7 @@ li {
 .space-between {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.2em;
-  margin-bottom: 0.2em;
+  margin: 0em 3em;
 }
 
 .space-around {
@@ -74,6 +73,10 @@ textarea {
   text-align: right;
   margin-top: 1em;
 }
+.right-align-header {
+  text-align: right;
+  padding-top: 1em;
+}
 
 form {
   margin: 1em auto;
@@ -100,7 +103,8 @@ form {
 
 header {
   border-bottom: 2px black solid;
-  padding-bottom: 2em
+  padding-bottom: 2em;
+  background-color: lightsteelblue;
 }
 
 .home-link {
@@ -126,4 +130,32 @@ header {
   .border-bottom {
     border-bottom: 2px solid black;
     padding-bottom: 1.2em;
+  }
+
+
+.selectors {
+  margin-top: 1em
+}
+
+  .avatar {
+    height: 1.5em;
+
+  }
+
+  .inline {
+    margin-top: 1em;
+    display: inline;
+    margin-right: 0.5em
+  }
+
+  #topic-selection, #sort-order-selection {
+    width: 140px
+  }
+
+  .card-layout {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    column-gap: 20px;
+    flex: 1 1 0
   }
