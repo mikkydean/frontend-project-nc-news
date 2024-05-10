@@ -9,6 +9,8 @@ function ArticlesList({ sortCriteria, selectedTopic } ) {
   const [isLoading, setIsLoading] = useState(true)
   const [searchParams, setSearchParams] = useSearchParams()
   const [isApiError, setIsApiError] = useState(null)
+  const [currentPage, setCurrentPage] =useState(1)
+  const [lastPage, setLastPage] = useState(false)
 
   const sortQuery = sortCriteria.split('-')[0]
   const sortOrder = sortCriteria.split('-')[1]
@@ -17,6 +19,7 @@ function ArticlesList({ sortCriteria, selectedTopic } ) {
     const newParams = new URLSearchParams(searchParams)
     newParams.set('sort_by', sortQuery)
     newParams.set('order', sortOrder)
+    newParams.set('p', currentPage)
     setSearchParams(newParams)
   }
 
@@ -26,15 +29,23 @@ function ArticlesList({ sortCriteria, selectedTopic } ) {
     getArticles({params: {
       sort_by: sortQuery,
       order: sortOrder,
-      topic: selectedTopic
+      topic: selectedTopic,
+      p: currentPage
   }}).then((response) => {
       setArticles(response.data.articles);
       setIsLoading(false)
+      setLastPage(Math.ceil(response.data.total_count/10))
     })
     .catch((err) => {
       setIsApiError(err)
     });
-  }, [sortCriteria, selectedTopic]);
+  }, [sortCriteria, selectedTopic, currentPage]);
+
+  console.log(lastPage)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [selectedTopic, sortOrder])
 
   if(isApiError) {
     return <ErrorComponent status={isApiError.response.request.status} message={isApiError.response.data.message}/>
@@ -54,6 +65,10 @@ else if(isLoading) {
             return <ArticleCard key={article.article_id} article={article}/>
         })}
       </ul>
+      <div className="space-between margin-bottom flex-grow">
+        <button disabled={currentPage===1} onClick={()=>{setCurrentPage(currentPage-1)}}>Previous page</button>
+        <button disabled={lastPage === currentPage}onClick={()=>{setCurrentPage(currentPage+1)}}>Next page</button>
+      </div>
     </>
   );
 }
