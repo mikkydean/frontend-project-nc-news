@@ -48,7 +48,7 @@ function CommentForm({ setComments, comments }) {
   };
 
   return (
-    <div className="comment-form">
+    <div className="comment-form border-top">
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment-text" className="bold">Enter a comment below:</label>
         <textarea

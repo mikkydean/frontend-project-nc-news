@@ -44,9 +44,9 @@ else if(isLoading) {
 
   return (
     <>
-      {!isLoggedIn ? <p className="bold">Please log in to post a comment</p> : <CommentForm setComments={setComments} comments={comments}/>}
+      {!isLoggedIn ? <p className="bold border-top">Please log in to post a comment</p> : <CommentForm setComments={setComments} comments={comments}/>}
       <Expandable>
-        <ul>
+        <ul className="card-layout">
           {comments.map((comment) => {
             return <CommentCard key={comment.comment_id} comment={comment} />;
           })}
