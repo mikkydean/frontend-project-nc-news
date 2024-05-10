@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import { getArticleById, patchVote } from "../api"
+import { getArticleById, patchArticleVote } from "../api"
 import Comments from "./Comments"
 import ErrorComponent from "./ErrorComponent"
 
@@ -28,7 +28,7 @@ function Article () {
         setMyVote(vote)
         article.votes + vote === 1 || article.votes + vote === -1 ? setVoteText('vote') : setVoteText('votes')
         setIsVotingError(false)
-        patchVote(article_id, vote)
+        patchArticleVote(article_id, vote)
         .catch((err) => {
             setIsVotingError(true)
         })
