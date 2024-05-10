@@ -36,7 +36,7 @@ const handleClick = (e) => {
 
     return <CardStyling> <li>
         <p className="text-body">{comment.body}</p>
-        <p className="space-between"><span>Author: {comment.author}</span><span>Date: {comment.created_at.slice(0,10)}</span></p>
+        <p className="space-between"><span>{comment.author}</span><span>{comment.created_at.slice(0,10)}</span></p>
         <p className="space-between">Votes: {comment.votes}</p>
         {isAuthor && isLoggedIn && <button disabled={hasBeenDeleted} className="delete-button" onClick={handleClick}>Delete comment</button>}
         {isBeingDeleted && <p>Deleting comment...</p>}

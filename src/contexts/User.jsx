@@ -4,7 +4,8 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState('')
-    const [ isLoggedIn, setIsLoggedIn] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const [userAvatar, setUserAvatar] = useState('')
 
     useEffect(() => {
         setIsLoggedIn(false)
@@ -14,5 +15,5 @@ export const UserProvider = ({ children }) => {
     }, [currentUser])
 
 
-    return <UserContext.Provider value={{ currentUser, setCurrentUser, isLoggedIn }}>{ children }</UserContext.Provider>
+    return <UserContext.Provider value={{ currentUser, setCurrentUser, isLoggedIn, userAvatar, setUserAvatar  }}>{ children }</UserContext.Provider>
 }

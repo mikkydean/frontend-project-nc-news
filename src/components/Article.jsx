@@ -41,11 +41,11 @@ else if(isLoading) {
     return <><article>
         <h2>{article.title}</h2>
         <img className='main-article-image' src={article.article_img_url}/>
-        <p  className="space-between"><span>Topic: {article.topic}</span><span>Author: {article.author}</span></p>
-        <p className="space-between"><span>Date: {article.created_at.slice(0,10)}</span> <span>Comments: {article.comment_count}</span></p>
+        <p  className="space-between"><span>{article.topic.charAt(0).toUpperCase() + article.topic.slice(1)}</span><span>{article.author}</span></p>
+        <p className="space-between"><span>{article.created_at.slice(0,10)}</span> <span>Comments: {article.comment_count}</span></p>
         <div className="space-around border-bottom">
         <button className="vote-button" disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(-1)}>-1</button>
-        <p>Total votes: <span className="bold">{article.votes + myVote}</span></p>
+        <p><span className="bold">Votes: {article.votes + myVote}</span></p>
         <button className="vote-button" disabled={myVote === -1 || myVote === 1} onClick={() => handleVote(1)}>+1</button>
         </div>
         {isVotingError && <p className="error">An error occurred when voting. Please try again.</p>}    
