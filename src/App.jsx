@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Article from "./components/Article";
 import { UserProvider } from "./contexts/User";
 import ErrorPage from "./components/ErrorPage";
+import User from "./components/User";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/articles/:article_id" element={<Article />} />
           <Route path="*" element={<ErrorPage />}/>
+          <Route path="/users/:username" element={<User />} />
         </Routes>
       </UserProvider>
     </>

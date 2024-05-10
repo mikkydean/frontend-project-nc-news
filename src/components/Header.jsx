@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import NavBar from "./NavBar";
 import { useContext } from "react";
@@ -19,8 +20,10 @@ function Header() {
   return (
     <header>
     <div className="right-align-header"> 
-    {isLoggedIn ? <button class="login" onClick={handleLogout}>Log out</button> : <button class="login" onClick={handleLogin}>Log in</button>}
+    {isLoggedIn ? <button className="login" onClick={handleLogout}>Log out</button> : <button className="login" onClick={handleLogin}>Log in</button>}
+      <Link to={`/users/${currentUser}`}>
     {isLoggedIn && <div><img className="avatar inline" src={userAvatar}/> <p className="inline">{currentUser}</p></div>}
+    </Link>
     </div>
       <h1>NC News</h1>
       <NavBar />

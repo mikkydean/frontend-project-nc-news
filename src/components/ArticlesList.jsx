@@ -17,6 +17,7 @@ function ArticlesList({ sortCriteria, selectedTopic } ) {
 
   const setSortOrder = (sortQuery, sortOrder) => {
     const newParams = new URLSearchParams(searchParams)
+    newParams.set('topic', selectedTopic)
     newParams.set('sort_by', sortQuery)
     newParams.set('order', sortOrder)
     newParams.set('p', currentPage)
