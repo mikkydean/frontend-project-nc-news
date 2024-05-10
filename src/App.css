@@ -170,6 +170,10 @@ header {
     margin: 0
   }
 
+.margin-bottom {
+  margin-bottom: 3em;
+}
+
   .login {
     background-color: lightblue;
     outline: none;
