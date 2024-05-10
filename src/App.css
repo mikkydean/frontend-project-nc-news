@@ -262,6 +262,8 @@ header {
       "article-body article-body main-article-image "
       "article-info article-info main-article-image"
       "votes votes main-article-image";
+      max-width: 1600px;
+      margin: 0 auto;
   }
 
   .title {
